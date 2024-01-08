@@ -1,0 +1,41 @@
+# Load force field parameters
+source leaprc.protein.ff14SB
+source leaprc.gaff2
+source leaprc.water.tip3p
+#set default PBRadii mbondi3
+
+
+# Load extraparameters for the ligand
+loadAmberPrep ./data/sotor_amber.prepin
+loadamberparams ./data/sotor_amber.frcmod
+loadamberparams ./data/gdp_amber.frcmod
+
+# Load protein, ligand and water molecules
+protein = loadPDB ./data/6oim_CYX12_sotorasib_clean.pdb
+
+
+waters = loadPDB ./data/waters.pdb
+mg = loadPDB ./data/mg.pdb
+GDP = loadmol2 gdp_amber.mol2
+
+# Build system
+system = combine {protein mg GDP waters}
+
+
+savepdb system ./data/6oim_amber_success.dry.pdb
+check system
+
+# Solvate
+solvateBox system TIP3PBOX 10 iso
+
+# Neutralise
+addions2 system Cl- 0
+addions2 system Na+ 0
+
+#check system
+
+# Save AMBER input files
+savePDB system ./data/6oim_CYX_amber_success.pdb
+saveamberparm system ./data/6oim_CYX_amber_success.prmtop ./data/6oim_CYX_amber_success.inpcrd
+saveAmberParm system ./data/6oim_CYX_amber_success.parm7 ./data/6oim_CYX_amber_success.rst7
+quit

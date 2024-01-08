@@ -1,0 +1,17 @@
+TITLE     CRYSTAL STRUCTURE OF HUMAN KRAS G12C COVALENTLY BOUND TO AMG 510      
+JRNL        TITL   THE CLINICAL KRAS(G12C) INHIBITOR AMG 510 DRIVES ANTI-TUMOUR 
+REMARK 280 CRYSTALLIZATION CONDITIONS: 1MM MGCL2, 0.1M MES PH6.5, 30%           
+REMARK 620                              MG A 301  MG                            
+REMARK 800 SITE_DESCRIPTION: binding site for residue MG A 301                  
+HET     MG  A 301       1                                                       
+HETNAM      MG MAGNESIUM ION                                                    
+HETNAM     MOV AMG 510 (BOUND FORM)                                             
+FORMUL   2   MG    MG 2+                                                        
+LINK         OG  SER A  17                MG    MG A 301     1555   1555  2.16  
+LINK        MG    MG A 301                 O   HOH A 440     1555   1555  2.17  
+LINK        MG    MG A 301                 O   HOH A 447     1555   1555  2.16  
+LINK        MG    MG A 301                 O2B GDP A 302     1555   1555  2.16  
+LINK        MG    MG A 301                 O   HOH A 405     1555   1555  2.16  
+LINK        MG    MG A 301                 O   HOH A 415     1555   1555  2.17  
+SITE     4 AC2 26 SER A 145  ALA A 146  LYS A 147   MG A 301                    
+HETATM 1338 MG    MG A 301      -2.512   2.588   0.220  1.00 20.19          MG  
