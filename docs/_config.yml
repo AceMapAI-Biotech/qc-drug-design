@@ -1,0 +1,12 @@
+title: QC Drug Design
+description: Quantum Computing Applications in Drug Design
+theme: jekyll-theme-cayman
+
+# GitHub Pages settings
+remote_theme: pages-themes/cayman@v0.2.0
+plugins:
+  - jekyll-remote-theme
+
+# Navigation
+show_downloads: true
+google_analytics: # Add your Google Analytics tracking ID here if needed 
