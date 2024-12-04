@@ -8,5 +8,5 @@ plugins:
   - jekyll-remote-theme
 
 # Navigation
-show_downloads: true
+show_downloads: false
 google_analytics: # Add your Google Analytics tracking ID here if needed 
