@@ -12,13 +12,9 @@ Welcome to the QC Drug Design documentation. This project explores quantum compu
 This repository contains implementations for:
 - Covalent bond simulations
 - C-C bond analysis
-- Quantum circuit implementations for molecular modeling
 
-## Getting Started
+## Getting Started Tutorials
 
-
-## Documentation 
-
-- [Usage Examples](./examples.html)
+- [Carbon-Carbon Bond Cleavage](./cc.html)
 
 More examples coming soon!

@@ -125,7 +125,7 @@ This approach allows us to capture the essential physics of solvation while main
 
 ### Energy Barriers and Reaction Energies
 | Method | ΔG‡ with solvent | ΔG‡ without solvent | ΔG with solvent | ΔG without solvent |
-|--------|------------------|--------------------|-----------------|--------------------|
+|:-------|:-----------------|:--------------------|:----------------|:-------------------|
 | HF     | 13.1            | 2.6                | -41.1           | -59.3             |
 | CASCI  | 11.8            | 1.4                | -49.5           | -68.0             |
 | VQE    | 7±5             | -4±7               | -51±11          | -65±9             |
