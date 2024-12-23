@@ -124,6 +124,7 @@ This approach allows us to capture the essential physics of solvation while main
 ## Results and Analysis
 
 ### Energy Barriers and Reaction Energies
+
 | Method | ΔG‡ with solvent | ΔG‡ without solvent | ΔG with solvent | ΔG without solvent |
 |:-------|:-----------------|:--------------------|:----------------|:-------------------|
 | HF     | 13.1            | 2.6                | -41.1           | -59.3             |
