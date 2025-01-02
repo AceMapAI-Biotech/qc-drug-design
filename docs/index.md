@@ -5,16 +5,21 @@ title: Home
 
 # QC Drug Design Documentation
 
-Welcome to the QC Drug Design documentation. This project explores quantum computing applications in drug design and molecular modeling.
+Welcome to the QC Drug Design documentation. This project demonstrates practical applications of quantum computing in drug design and molecular modeling. We focus on using quantum algorithms and chemistry to solve real pharmaceutical challenges, like predicting prodrug activation and molecular properties.
 
-## Project Overview
+Our tools and methods make complex quantum chemical calculations accessible on today's quantum computers through careful system simplification and optimized quantum circuits. The documentation provides detailed tutorials and examples showing how to leverage quantum computing for tasks like:
 
-This repository contains implementations for:
-- Covalent bond simulations
-- C-C bond analysis
+- Calculating reaction energetics and activation barriers
+- Modeling molecular dynamics with QM/MM methods
+- Simulating chemical reactions and bond changes
+- Incorporating environmental effects like solvation
 
-## Getting Started Tutorials
+You'll find practical approaches for applying quantum methods to accelerate drug development.
 
-- [Carbon-Carbon Bond Cleavage](./cc.html)
+## Getting Started
+
+Get started with the tutorials:
+- [Carbon-Carbon Bond Cleavage](./cc.html) calculations and modeling. (中文版)
+- Covalent bond simulations and analysis.
 
 More examples coming soon!

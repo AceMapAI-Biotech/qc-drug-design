@@ -1,6 +1,8 @@
-# Understanding Carbon-Carbon Bond Cleavage in Prodrug Design
+# Using Quantum Computation for Prodrug Design
 
-## Background
+## Introduction
+
+This post explores how quantum computing can speed up prodrug design, with a focus on carbon-carbon (C-C) bond-based prodrugs. We demonstrate a practical approach combining quantum chemistry with quantum algorithms to predict how prodrugs activate in the body. Using β-lapachone as an example, we show how quantum computation efficiently calculates important parameters like activation energies and solvation effects. Our method makes these complex calculations possible on today's quantum computers by simplifying the molecular system and using optimized quantum circuits.
 
 ### What is a Prodrug?
 
@@ -30,7 +32,7 @@ We need to determine if a C-C bond-based prodrug will activate under physiologic
 
 Here we show the code for the energy calculation. The complete code can be found in the [c_c_bond folder](https://github.com/AceMapAI-Biotech/qc-drug-design/tree/main/c_c_bond).
 
-#### 1. System Simplification
+#### Step 1: System Simplification
 
 To make the calculations feasible on current quantum computers, we reduce the complex molecular system to a manageable size. This is necessary because current quantum computers can only handle a limited number of qubits reliably. We employ the active space approximation, which focuses on the most chemically relevant electrons and orbitals - in this case, those involved in the C-C bond cleavage.
 
@@ -38,6 +40,12 @@ The code below demonstrates how we implement this reduction using a (2e, 2o) act
 
 ```python
 # From qc.py - showing how we handle the active space reduction
+from pyscf import solvent
+from pyscf.mcscf import CASCI
+from pyscf.lib import logger
+
+from tencirchem import HEA, M, UCC
+
 basis = "6-311g(d,p)"
 mol_eq = M(atom=geom_gaussian6, basis=basis)
 ne, no = 2, 2  # 2 electrons, 2 orbitals active space
@@ -57,7 +65,7 @@ else:
 
 After this reduction, the quantum computation becomes tractable while still capturing the essential physics of the C-C bond breaking process. The HEA implementation uses a single layer of quantum gates to minimize the impact of hardware noise while maintaining sufficient flexibility to describe the electronic state.
 
-#### 2. Computational Methods
+#### Step 2: Computational Methods
 We employed three different approaches to validate our results. This multi-method approach allows us to cross-validate our findings and understand the trade-offs between classical and quantum methods. The code below shows how we implement these three approaches - Hartree-Fock (HF) for a baseline calculation, Complete Active Space Configuration Interaction (CASCI) for a more accurate classical result, and Variational Quantum Eigensolver (VQE) for the quantum computation:
 
 ```python
@@ -86,7 +94,7 @@ print(casci.kernel()[0])
 
 The CASCI calculation includes solvent effects through the ddCOSMO model, and we've disabled canonicalization to maintain consistency with the quantum computation. For the quantum calculation, we use the HEA solver with tensornetwork optimization, which provides a good balance between accuracy and computational efficiency.
 
-#### 3. Solvation Effects
+#### Step 3: Calculating Solvation Effects
 Water plays a crucial role in drug activation processes in the body, so accurately modeling solvation effects is essential. We use the conductor-like screening model (COSMO) implemented in ddCOSMO, which provides an efficient way to account for the water environment without explicitly modeling water molecules. This approach treats the solvent as a continuous medium characterized by its dielectric constant:
 
 ```python
@@ -94,9 +102,24 @@ Water plays a crucial role in drug activation processes in the body, so accurate
 from pyscf import gto, scf, solvent
 from pyscf.solvent import ddCOSMO
 
-# Setup molecule
+# Setup molecule 5.gjf
 mol = gto.Mole()
-mol.atom = """[molecular coordinates]"""  # Coordinates omitted
+mol.atom = """
+ C                  0.00000800    1.39812400    0.00000000
+ C                 -0.00000200    0.64420900    1.24608200
+ C                 -0.00000200   -0.70980600    1.25056200
+ C                  0.00003300   -1.46955300    0.00000000
+ C                 -0.00000200   -0.70980600   -1.25056200
+ C                 -0.00000200    0.64420900   -1.24608200
+ O                 -0.00003200   -2.72480100    0.00000000
+ C                  0.00001300    2.75406900    0.00000000
+ H                 -0.00001100    1.20486000    2.17731400
+ H                 -0.00001700   -1.27704300    2.17689300
+ H                 -0.00001700   -1.27704300   -2.17689300
+ H                 -0.00001100    1.20486000   -2.17731400
+ H                  0.00001500    3.31704500    0.92947800
+ H                  0.00001500    3.31704500   -0.92947800
+"""
 mol.basis = "6-311+g(d,p)"
 mol.charge = 0
 mol.spin = 0
@@ -158,3 +181,7 @@ Our research provides strong validation for using carbon-carbon bond cleavage as
 ### For Quantum Computing
 This study represents a significant step forward in applying quantum computing to real-world drug design challenges. While our work highlights the current limitations of quantum computers - particularly the need to simplify molecular systems to make them computationally tractable - it also demonstrates how quantum and classical methods can be successfully integrated to solve complex problems. The performance benchmarks we've established provide valuable reference points for future quantum computing applications in pharmaceutical research, helping set realistic expectations and identify areas for improvement.
 
+
+## Contact Information
+
+For inquiries about this research or potential collaborations, please contact bd@acemapai.com.
