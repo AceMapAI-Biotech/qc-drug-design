@@ -36,22 +36,21 @@ Our solution combines quantum computing with classical methods to achieve both a
 
 ### Step 1: System Preparation
 
-First, we need to prepare our molecular system:
+First, we nead to prepare our molecular system. The process involves several steps to handle the non-standard amino acid resulting from the covalent bond between KRAS and Sotorasib:
 
-1. Start with the crystal structure of KRAS G12C bound to Sotorasib (PDB: 6OIM)
-2. Process the structure using Amber tools:
 ```bash
-# Convert PDB to Amber format
-pdb4amber -i 6oim.pdb -o 6oim_processed.pdb
+# Remove hydrogens and prepare protein fragments
+pdb4amber -i 6oim_CYX12_sotorasib_1_12.pdb -o 6oim_CYX12_sotorasib_1_12_delH.pdb --nohyd --dry
+pdb4amber -i 6oim_CYX12_sotorasib_14_e.pdb -o 6oim_CYX12_sotorasib_14_e_delH.pdb --nohyd --dry
+
+# Generate parameters for the non-standard residue (Sotorasib-bound cysteine)
+antechamber -i CYX12_sotorasib.mol2 -fi mol2 -o sotor_amber.ac -fo ac -c bcc -nc 0 -rn CYX -at amber
 
 # Generate force field parameters
-antechamber -i sotorasib.mol2 -fi mol2 -o sotorasib.prepi -fo prepi -c bcc -nc 0
+parmchk2 -i sotor_amber.prepin -f prepi -o sotor_amber.frcmod -a Y -s gaff2
 
-# Check for missing parameters
-parmchk2 -i sotorasib.prepi -f prepi -o sotorasib.frcmod
-
-# Create the system topology
-tleap -f setup.in
+# Create the system topology using tleap
+tleap -s -f 6oim_sotor_amber.in
 ```
 
 ### Step 2: QM Region Selection
