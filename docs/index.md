@@ -20,6 +20,6 @@ You'll find practical approaches for applying quantum methods to accelerate drug
 
 Get started with the tutorials:
 - [Carbon-Carbon Bond Cleavage](./cc.html) calculations and modeling. (中文版)
-- Covalent bond simulations and analysis.
+- [KRAS Covalent Bond Simulation](./kras.html).
 
 More examples coming soon!
