@@ -19,7 +19,9 @@ You'll find practical approaches for applying quantum methods to accelerate drug
 ## Getting Started
 
 Get started with the tutorials:
-- [Carbon-Carbon Bond Cleavage](./cc.html) calculations and modeling. (中文版)
+- [Hartree-Fock (HF) Calculations](./hf.html) for electronic structure
+- [HF with COSMO Solvation](./hf_cosmo.html) for solution-phase modeling
+- [Carbon-Carbon Bond Cleavage](./cc.html) calculations and modeling.
 - [KRAS Covalent Bond Simulation](./kras.html).
 
 More examples coming soon!
