@@ -1,0 +1,14 @@
+[project]
+name = "qc-drug-design"
+version = "0.1.0"
+description = "Quantum Chemistry Drug Design Environment"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "matplotlib>=3.10.1",
+    "pennylane>=0.40.0",
+    "pennylane-lightning-gpu>=0.40.0",
+    "pip>=25.0.1",
+    "psutil>=7.0.0",
+    "pyscf>=2.8.0",
+]
